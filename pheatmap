@@ -1,0 +1,69 @@
+pheatmap(mat, color = colorRampPalette(rev(brewer.pal(n = 7, name =
+                                                        "RdYlBu")))(100), kmeans_k = NA, breaks = NA, border_color = "grey60",
+         cellwidth = NA, cellheight = NA, scale = "none", cluster_rows = TRUE,
+         cluster_cols = TRUE, clustering_distance_rows = "euclidean",
+         clustering_distance_cols = "euclidean", clustering_method = "complete",
+         clustering_callback = identity2, cutree_rows = NA, cutree_cols = NA,
+         treeheight_row = ifelse((class(cluster_rows) == "hclust") || cluster_rows,
+                                 50, 0), treeheight_col = ifelse((class(cluster_cols) == "hclust") ||
+                                                                   cluster_cols, 50, 0), legend = TRUE, legend_breaks = NA,
+         legend_labels = NA, annotation_row = NA, annotation_col = NA,
+         annotation = NA, annotation_colors = NA, annotation_legend = TRUE,
+         annotation_names_row = TRUE, annotation_names_col = TRUE,
+         drop_levels = TRUE, show_rownames = T, show_colnames = T, main = NA,
+         fontsize = 10, fontsize_row = fontsize, fontsize_col = fontsize,
+         angle_col = c("270", "0", "45", "90", "315"), display_numbers = F,
+         number_format = "%.2f", number_color = "grey30", fontsize_number = 0.8
+         * fontsize, gaps_row = NULL, gaps_col = NULL, labels_row = NULL,
+         labels_col = NULL, filename = NA, width = NA, height = NA,
+         silent = FALSE, na_col = "#DDDDDD", ...)
+ 
+## 函数解释
+mat # 需要绘制热图的数字矩阵。
+color # 表示颜色，赋值渐变颜色调色板colorRampPalette属性，选择"蓝，白，红"渐变，分为100个等级
+# 例 color =  colorRampPalette(c("navy", "white", "red"))(100)
+kmeans_k # 绘制热图的行聚类数，如果是NA，那么行不会聚类。
+breaks  # 设置mat数值范围的数字序列
+border_color # 表示热图上单元格边框的颜色，如果不绘制边框，则使用NA
+cellwidth # 表示每个单元格的宽度，若选择NA则表示适应窗口
+cellheight # 表示每个单元格的高度，若选择NA则表示适应窗口
+scale # 表示值均一化的方向，或者按照行或列，或者没有，值可以是"row",  “column” 或者"none"
+cluster_rows # 表示进行行的聚类，值可以是FALSE或TRUE
+cluster_cols # 表示进行列的聚类，值可以是FALSE或TRUE
+clustering_distance_rows # 表示行距离度量的方法
+clustering_distance_cols # 表示列距离度量的方法
+clustering_method # 表示聚类方法，值可以是hclust的任何一种，
+# 如"ward.D",“single”,  “complete”, “average”, “mcquitty”, “median”, “centroid”, “ward.D2”
+clustering_callback # 回调函数来修改聚类
+cutree_rows # 基于层次聚类（使用cutree）划分行的簇数（如果未聚集行，则忽略参数）
+cutree_cols  # 基于层次聚类（使用cutree）划分列的簇数（如果未聚集行，则忽略参数）
+treeheight_row # 行的树的高度,
+treeheight_col # 列的树的高度
+legend # TRUE或者FALSE，表示是否显示图例
+legend_breaks # 设置图例的断点，如legend_breaks =  -1:4
+legend_labels # legend_breaks对应的标签例：legend_breaks = -1:4, legend_labels = c(“0”,“1e-4”, “1e-3”, “1e-2”, “1e-1”, “1”)
+annotation_row # 行的分组信息，需要使用相应的行名称来匹配数据和注释中的行，注意之后颜色设置会考虑离散值还是连续值，格式要求为数据框
+annotation_col # 列的分组信息，需要使用相应的列名称来匹配数据和注释中的列，格式要求为数据框
+annotation_colors  # 用于手动指定annotation_row和annotation_col  track颜色的列表。
+annotation_legend # 是否显示图例的名称。
+annotation_names_row # 是否显示行注释的名称。
+annotation_names_col # 是否显示列注释的名称。
+show_rownames # 是否显示行名
+show_colnames # 是否显示列名
+main  # 图的名字
+fontsize # 图的字体大小
+fontsize_row # 行名的字体大小，默认与图的字体大小相同
+fontsize_col # 列名的字体大小，默认与图的字体大小相同
+angle_col # 列标签的角度，可选择 (0, 45, 90, 270 and 315)
+display_numbers # 表示是否将数值显示在热图的格子中，如果这是一个矩阵（与原始矩阵具有相同的尺寸），则显示矩阵的内容而不是原始值。
+number_format # 设置显示数值的格式，较常用的有"%.2f"（保留小数点后两位），"%.1e"（科学计数法显示，保留小数点后一位）
+number_color # 设置显示内容的颜色
+fontsize_number # 设置显示内容的字体大小
+labels_row  # 代替行名的自定义标签 
+labels_col # 代替列名的自定义标签
+filename # 图片保存位置以及文件名
+width # 手动设置输出文件的宽度（单位：英寸）
+height # 手动设置输出文件的高度（单位：英寸）
+silent # 不绘制热图
+na_col # 缺失值的颜色
+
